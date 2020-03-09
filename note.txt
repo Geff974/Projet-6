@@ -1,0 +1,4 @@
+pattern mvc
+
+nombre de case parametrable pour les grisé
+
