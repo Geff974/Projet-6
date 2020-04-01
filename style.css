@@ -25,3 +25,11 @@ body {
   .black-case {
     background: radial-gradient(#292d38, #3c6382);
   }
+
+.player1 {
+    background: green;
+}
+
+.player2 {
+    background: red;
+}

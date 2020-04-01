@@ -1,4 +1,8 @@
-pattern mvc
+- Map a stocker tous les element (player, greyCase etc)
+- chaque case a un evenement onClick
+- 
 
-nombre de case parametrable pour les grisé
 
+Wordpress
+- stripe pour le payement
+- https (herbergeur 
