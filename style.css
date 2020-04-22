@@ -33,3 +33,14 @@ body {
 .player2 {
     background: red;
 }
+
+.active {
+  border: 2px solid black;
+  box-shadow: 0px 0px 10px black;
+}
+
+.couteau {
+  background-image: url(img/knife.png);
+  background-size: auto 100%;
+  z-index: 5;
+}
