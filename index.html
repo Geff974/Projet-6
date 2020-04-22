@@ -26,7 +26,7 @@
         </div>
       </div>
       <div class="row align-items-center">
-        <button type="button" class="btn btn-outline-primary" id="btnLoadMap" onclick="view.initMap()">Charger la map</button>
+        <button type="button" class="btn btn-outline-primary" id="btnLoadMap" onclick="render.initMap()">Charger la map</button>
         <button type="button" class="btn btn-outline-primary" id="btnGrey" onclick="controller.selectGreyCase()">Griser les cases</button>
         <button type="button" class="btn btn-outline-danger" id="btnGrey" onclick="controller.eraseMap()">EFFACER</button>
       </div>
@@ -34,16 +34,26 @@
         <table class="mx-auto" id="gameMap">
         </table>
       </div>
+
+      <diV class="row justify-content-around">
+        <div class="col-6 p1">Player 1</div>
+        <div class="col-6 p2">Player 2</div>
+      </diV>
+      <div class="row align-items-center">
+        <div class="col-3">Life : <p class="lifeP1"></p></div>
+        <div class="col-3 offset-sm-3">Life : <p class="lifeP2"></p></div>
+      </div>
+
     </div>
 
 
 
     <!-- Optional JavaScript -->
-    <script src="Weapon.js"></script>
-    <script src="Player.js"></script>
-    <script src="model.js"></script>
-    <script src="controller.js"></script>
-    <script src="view.js"></script>
+    <script src="m/Weapon.js"></script>
+    <script src="m/Player.js"></script>
+    <script src="m/model.js"></script>
+    <script src="c/controller.js"></script>
+    <script src="v/view.js"></script>
     <script src="scripts.js"></script>
   </body>
 </html>

@@ -1,11 +1,21 @@
 class Game {
-    constructor () {
-        this.map = [];
-        this.playerActif = 0;
+    constructor (map) {
+        this.map = map;
+        this.turn = 1;
+    }
+
+    launcher() {
+        const player1 = new Player(1);
+    }
+
+    changeWeapon(player, x, y) {
+        if (isNaN(this.map.map[x][y])) {
+            player.setWeapon(map.map[x][y]);
+        }
     }
 }
 
-class Map {
+class gameMap {
     constructor () {
         this.map = [];
     }
@@ -27,15 +37,16 @@ class Map {
         this.initPlace(player1);
         this.initPlace(player2);
         this.initPlace(couteau);
-        this.init(pistolet);
+        this.initPlace(pistolet);
         this.initPlace(fusilleAPompe);
         this.placeAll();
 
-
+        render.init();
+        this.activeCase(player1);
     }
     
     selectGreyCase () {
-        const nbrGreyCase = document.getElementById('nbrGreyCase').value;
+        let nbrGreyCase = document.getElementById('nbrGreyCase').value;
         
         //Clean grey case
         for (const i in this.map) {
@@ -50,7 +61,7 @@ class Map {
             const rand = Math.floor(Math.random() * this.map.length);
             const rand2 = Math.floor(Math.random() * this.map[0].length);
             if(this.map[rand][rand2] != 0) {
-                map[rand][rand2] = 0;
+                this.map[rand][rand2] = 0;
                 nbrGreyCase--;
             }
         } while (nbrGreyCase)
@@ -74,7 +85,75 @@ class Map {
         cls.move(posX, posY);
     }
 
+    desactiveCase() {
+        for(let i=0; i<this.map.length; i++) {
+            for(let j=0; j<this.map[0].length; j++) {
+                if(document.getElementById(i +":" +j).classList.contains('active')) {
+                    document.getElementById(i +":" +j).classList.remove('active');
+                }
+            }
+        }
+    }
 
+    checkCaseAvailab(x, y) {
+        if (this.map[x][y] === 0 || this.map[x][y].hasOwnProperty('id')) {
+            return 0;
+        } else return 1;
+    }
 
+    activeCase(player) {
+        this.desactiveCase();
+
+        const x = parseInt(player.getPosition('x'), 10);
+        const y = parseInt(player.getPosition('y'), 10);
+
+        const nbrCol = document.getElementById('nbrCol').value;
+        const nbrRow = document.getElementById('nbrRow').value;
+        
+        let i=y+1;
+        let nbrCase=3;
+        while (i<nbrCol && nbrCase>0) {
+            if (!this.checkCaseAvailab(x, i)) break;
+            document.getElementById(x + ":" + i).classList.add('active');
+            i++;
+            nbrCase--;
+        }
+
+        nbrCase=3;
+        i=y-1;
+        while (i>=0 && nbrCase>0) {
+            if (!this.checkCaseAvailab(x, i)) break;
+            document.getElementById(x + ":" + i).classList.add('active');
+            i--;
+            nbrCase--;
+        }
+
+        nbrCase=3;
+        i=x+1;
+        while (i<nbrRow && nbrCase>0) {
+            if (!this.checkCaseAvailab(i, y)) break;
+            document.getElementById(i + ":" + y).classList.add('active');
+            i++;
+            nbrCase--;
+        }
+
+        nbrCase=3;
+        i=x-1;
+        while (i>=0 && nbrCase>0) {
+            if (!this.checkCaseAvailab(i, y)) break;
+            document.getElementById(i + ":" + y).classList.add('active');
+            i--;
+            nbrCase--;
+        }
+
+    }
+
+    cleanPosition (player) {
+        const x = parseInt(player.getPosition('x'), 10);
+        const y = parseInt(player.getPosition('y'), 10);
+
+        this.map[x][y] = 1;
+        render.cleanPosition(x, y);
+    }
 
 }
