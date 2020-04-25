@@ -1,17 +1,23 @@
 class Game {
-    constructor (map) {
+    constructor (map, player1, player2) {
         this.map = map;
         this.turn = 1;
-    }
-
-    launcher() {
-        const player1 = new Player(1);
+        this.player1 = player1;
+        this.player2 = player2;
     }
 
     changeWeapon(player, x, y) {
         if (isNaN(this.map.map[x][y])) {
             player.setWeapon(map.map[x][y]);
         }
+    }
+
+    actualiseLife() {
+        const lifeP1 = document.getElementById('lifeP1');
+        const lifeP2 = document.getElementById('lifeP2');
+
+        lifeP1.innerHTML = this.player1.life;
+        lifeP2.innerHTML = this.player2.life;
     }
 }
 
@@ -43,6 +49,7 @@ class gameMap {
 
         render.init();
         this.activeCase(player1);
+        game.actualiseLife();
     }
     
     selectGreyCase () {

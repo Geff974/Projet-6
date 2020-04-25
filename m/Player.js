@@ -1,12 +1,13 @@
 class Player {
 
-    constructor (id) {
+    constructor (id, map) {
         this.weapon = point;
         this.life = 100;
         this.positionX = 0;
         this.positionY = 0;
         this.protect = false;
         this.id = id;
+        this.map = map;
     }
 
     move(positionX, positionY) {

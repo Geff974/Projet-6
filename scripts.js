@@ -1,5 +1,4 @@
 const map = new gameMap();
-const game = new Game(map);
 const render = new Render(map);
 const point = new Weapon('point', 10);
 const couteau = new Weapon('couteau', 20);
@@ -8,6 +7,8 @@ const fusilleAPompe = new Weapon('fusilleAPompe', 50);
 
 const player1 = new Player(1);
 const player2 = new Player(2);
+
+const game = new Game(map, player1, player2);
 
 const movePlayer = (event) => {
     const eventId = event.target.id;
