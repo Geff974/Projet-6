@@ -1,26 +1,3 @@
-class Game {
-    constructor (map, player1, player2) {
-        this.map = map;
-        this.turn = 1;
-        this.player1 = player1;
-        this.player2 = player2;
-    }
-
-    changeWeapon(player, x, y) {
-        if (isNaN(this.map.map[x][y])) {
-            player.setWeapon(map.map[x][y]);
-        }
-    }
-
-    actualiseLife() {
-        const lifeP1 = document.getElementById('lifeP1');
-        const lifeP2 = document.getElementById('lifeP2');
-
-        lifeP1.innerHTML = this.player1.life;
-        lifeP2.innerHTML = this.player2.life;
-    }
-}
-
 class gameMap {
     constructor () {
         this.map = [];
@@ -75,10 +52,10 @@ class gameMap {
     }
 
     placeAll () {
-        this.map[player1.positionX][player1.positionY] = player1;
-        this.map[player2.positionX][player2.positionY] = player2;
-        this.map[couteau.positionX][couteau.positionY] = couteau;
-        this.map[pistolet.positionX][pistolet.positionY] = pistolet;
+        this.map[player1.positionX][player1.positionY]             = player1;
+        this.map[player2.positionX][player2.positionY]             = player2;
+        this.map[couteau.positionX][couteau.positionY]             = couteau;
+        this.map[pistolet.positionX][pistolet.positionY]           = pistolet;
         this.map[fusilleAPompe.positionX][fusilleAPompe.positionY] = fusilleAPompe;
     }
 
@@ -88,7 +65,7 @@ class gameMap {
         do {
             posX = Math.floor(Math.random() * this.map.length);
             posY = Math.floor(Math.random() * this.map[0].length);
-        }while (this.map[posX][posY] != 1);
+        } while (this.map[posX][posY] !== 1);
         cls.move(posX, posY);
     }
 
@@ -118,7 +95,7 @@ class gameMap {
         const nbrRow = document.getElementById('nbrRow').value;
         
         let i=y+1;
-        let nbrCase=3;
+        let nbrCase=1;
         while (i<nbrCol && nbrCase>0) {
             if (!this.checkCaseAvailab(x, i)) break;
             document.getElementById(x + ":" + i).classList.add('active');
@@ -126,7 +103,7 @@ class gameMap {
             nbrCase--;
         }
 
-        nbrCase=3;
+        nbrCase=1;
         i=y-1;
         while (i>=0 && nbrCase>0) {
             if (!this.checkCaseAvailab(x, i)) break;
@@ -135,7 +112,7 @@ class gameMap {
             nbrCase--;
         }
 
-        nbrCase=3;
+        nbrCase=1;
         i=x+1;
         while (i<nbrRow && nbrCase>0) {
             if (!this.checkCaseAvailab(i, y)) break;
@@ -144,7 +121,7 @@ class gameMap {
             nbrCase--;
         }
 
-        nbrCase=3;
+        nbrCase=1;
         i=x-1;
         while (i>=0 && nbrCase>0) {
             if (!this.checkCaseAvailab(i, y)) break;
@@ -153,14 +130,6 @@ class gameMap {
             nbrCase--;
         }
 
-    }
-
-    cleanPosition (player) {
-        const x = parseInt(player.getPosition('x'), 10);
-        const y = parseInt(player.getPosition('y'), 10);
-
-        this.map[x][y] = 1;
-        render.cleanPosition(x, y);
     }
 
 }

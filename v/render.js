@@ -64,10 +64,10 @@ class Render {
     }
 
     placePlayer(player) {
-        const x = player.getPosition('x');
-        const y = player.getPosition('y');
+        const x = player.positionX;
+        const y = player.positionY;
 
-        const place = document.getElementById(x + ":" + y);
+        const place        = document.getElementById(x + ":" + y);
         this.map.map[x][y] = player;
         place.classList.add('player' + player.id);
         place.classList.add(player.weapon.name);
