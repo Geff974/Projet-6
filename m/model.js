@@ -1,3 +1,26 @@
+class Game {
+    constructor (map, player1, player2) {
+        this.map     = map;
+        this.turn    = 1;
+        this.player1 = player1;
+        this.player2 = player2;
+    }
+
+    changeWeapon(player, x, y) {
+        if (isNaN(this.map.map[x][y])) {
+            player.setWeapon(map.map[x][y]);
+        }
+    }
+
+    actualiseLife() {
+        const lifeP1 = document.getElementById('lifeP1');
+        const lifeP2 = document.getElementById('lifeP2');
+
+        lifeP1.innerHTML = this.player1.life;
+        lifeP2.innerHTML = this.player2.life;
+    }
+}
+
 class gameMap {
     constructor () {
         this.map = [];
@@ -65,7 +88,7 @@ class gameMap {
         do {
             posX = Math.floor(Math.random() * this.map.length);
             posY = Math.floor(Math.random() * this.map[0].length);
-        } while (this.map[posX][posY] !== 1);
+        }while (this.map[posX][posY] != 1);
         cls.move(posX, posY);
     }
 
@@ -88,15 +111,13 @@ class gameMap {
     activeCase(player) {
         this.desactiveCase();
 
-        let {X, Y} = player;
-        X = parseInt(X, 10);
-        Y = parseInt(Y, 10);
+        const {X, Y} = player;
 
         const nbrCol = document.getElementById('nbrCol').value;
         const nbrRow = document.getElementById('nbrRow').value;
         
         let i=Y+1;
-        let nbrCase=1;
+        let nbrCase=3;
         while (i<nbrCol && nbrCase>0) {
             if (!this.checkCaseAvailab(X, i)) break;
             document.getElementById(X + ":" + i).classList.add('active');
@@ -104,7 +125,7 @@ class gameMap {
             nbrCase--;
         }
 
-        nbrCase=1;
+        nbrCase=3;
         i=Y-1;
         while (i>=0 && nbrCase>0) {
             if (!this.checkCaseAvailab(X, i)) break;
@@ -113,16 +134,16 @@ class gameMap {
             nbrCase--;
         }
 
-        nbrCase=1;
+        nbrCase=3;
         i=X+1;
         while (i<nbrRow && nbrCase>0) {
-            if (!this.checkCaseAvailab(i, Y)) break;
+            if (!this.checkCaseAvailab(i, y)) break;
             document.getElementById(i + ":" + Y).classList.add('active');
             i++;
             nbrCase--;
         }
 
-        nbrCase=1;
+        nbrCase=3;
         i=X-1;
         while (i>=0 && nbrCase>0) {
             if (!this.checkCaseAvailab(i, Y)) break;
@@ -131,6 +152,13 @@ class gameMap {
             nbrCase--;
         }
 
+    }
+
+    cleanPosition (player) {
+        const {X, Y} = player;
+
+        this.map[X][Y] = 1;
+        render.cleanPosition(X, Y);
     }
 
 }

@@ -3,20 +3,13 @@ class Weapon {
     constructor (name, damage) {
         this.name   = name;
         this.damage = damage;
+        this.X      = 0;
+        this.Y      = 0;
     }
 
-    move(positionX, positionY) {
-        this.positionX = positionX;
-        this.positionY = positionY;
-    }
-
-    getPosition (p) {
-        switch (p) {
-            case 'x':
-                return this.positionX;
-            case 'y':
-                return this.positionY;
-        }
+    move(X, Y) {
+        this.X = X;
+        this.Y = Y;
     }
 
 }

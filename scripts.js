@@ -18,7 +18,6 @@ const movePlayer = (event) => {
     if (document.getElementById(x + ":" + y).classList.contains('active')) {
         if (game.playerActive == 1) {
             player1.movePlayer(x, y);
-            render.placePlayer(player1);
             if(game.turnsLeft>0) {
                 map.activeCase(player1);
                 game.turnsLeft--;
@@ -29,7 +28,6 @@ const movePlayer = (event) => {
             }
         } else {
             player2.movePlayer(x, y);
-            render.placePlayer(player2);
             if(game.turnsLeft>0) {
                 map.activeCase(player2);
                 game.turnsLeft--;
@@ -45,4 +43,8 @@ const movePlayer = (event) => {
         alert("Veuillez cliquez sur une case disponible");
     }
 
+}
+
+const toggleButton = (button) => {
+    button.classList.toggle('active');
 }

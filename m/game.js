@@ -8,8 +8,8 @@ class Game {
     }
 
     actualiseLife() {
-        const lifeP1 = document.getElementById('lifeP1');
-        const lifeP2 = document.getElementById('lifeP2');
+        const lifeP1 = document.getElementById('p1life');
+        const lifeP2 = document.getElementById('p2life');
 
         lifeP1.innerHTML = this.player1.life;
         lifeP2.innerHTML = this.player2.life;

@@ -47,14 +47,28 @@
         </table>
       </div>
 
-      <diV class="row justify-content-around">
-        <div class="col-6 p1">Player 1</div>
-        <div class="col-6 p2">Player 2</div>
-      </diV>
-      <div class="row align-items-center">
-        <div class="col-3">Life : <p id="lifeP1"></p></div>
-        <div class="col-3 offset-sm-3">Life : <p id="lifeP2"></p></div>
-      </div>
+      <div id="infoPlayer" class="row justify-content-around">
+        <div class="col-6 titlePlayer">
+          <h5 class="titlePlayer">Player 1</h5>
+          <div class="row rowBtn">
+            <button id="p1attack" onclick="" type="button" class="col-3 btn btn-outline-primary">Attack</button>
+            <button id="p1defense" onclick="toggleButton(this)" type="button" class="col-3 btn btn-outline-danger">Defense</button>
+          </div>
+          <div class="row">
+            <div class="col-3">Life : <p id="p1life"></p></div>
+          </div>
+        </div>
+
+        <div class="col-6 titlePlayer">
+          <h5 class="titlePlayer">Player 2</h5>
+          <div class="row rowBtn">
+            <button id="p2attack" onclick="" disabled type="button" class="col-3 btn btn-outline-primary">Attack</button>
+            <button id="p2defense" onclick="toggleButton(this)" disabled type="button" class="col-3 btn btn-outline-danger">Defense</button>
+          </div>
+          <div class="row">
+            <div class="col-3">Life : <p id="p2life"></p></div>
+          </div>
+        </div>
 
     </div>
 

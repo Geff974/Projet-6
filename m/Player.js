@@ -1,28 +1,24 @@
 class Player {
 
     constructor (id, map, render) {
-        this.weapon    = point;
-        this.life      = 100;
-        this.positionX = 0;
-        this.positionY = 0;
-        this.protect   = false;
-        this.id        = id;
-        this.map       = map;
-        this.render    = render;
+        this.weapon     = point;
+        this.weaponDrop = null
+        this.life       = 100;
+        this.X          = 0;
+        this.Y          = 0;
+        this.protect    = false;
+        this.id         = id;
+        this.map        = map;
+        this.render     = render;
     }
 
-    move(positionX, positionY) {
-        this.positionX = positionX;
-        this.positionY = positionY;
+    move(x, y) {
+        this.X = x;
+        this.Y = y;
     }
 
-    getPosition (p) {
-        switch (p) {
-            case 'x':
-                return this.positionX;
-            case 'y':
-                return this.positionY;
-        }
+    getPosition () {
+        return this.X, this.Y;
     }
 
     setWeapon (weapon) {
@@ -30,11 +26,23 @@ class Player {
     } 
 
     movePlayer(x, y) {
-        this.map.map[this.positionX][this.positionY] = 1;
-        this.render.cleanPosition(this.positionX, this.positionY);
+        this.render.cleanPosition(this.X, this.Y);
+        if (this.weaponDrop != null) {
+            this.map.map[this.X][this.Y] = this.weaponDrop;
+            this.weaponDrop.move(this.X, this.Y);
+            this.render.placeObj(this.weaponDrop);
+            this.weaponDrop = null;
+        } else {
+            this.map.map[this.X][this.Y] = 1;
+        }
+        
         this.move(x, y);
         if (isNaN(this.map.map[x][y])) {
+            if (this.weapon != point) {
+                this.weaponDrop = this.weapon;
+            }
             this.setWeapon(this.map.map[x][y]);
         }
+        this.render.placeObj(this);
     }
 }

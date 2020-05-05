@@ -1,37 +1,37 @@
 body {
-    background: radial-gradient(#ff8f26, #ffdda1);
-  }
+  background: radial-gradient(#ff8f26, #ffdda1);
+}
   
-  td {
-    border: solid 1px black;
-    border-radius: 10%;
-    height: 50px;
-    width: 50px;
+td {
+  border: solid 1px black;
+  border-radius: 10%;
+  height: 50px;
+  width: 50px;
+  background-color: white;
+}
+
+.container {
+  height: 100%;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+.white-case {
     background-color: white;
-  }
-  
-  .container {
-    height: 100%;
-  }
-  
-  table {
-    border-collapse: collapse;
-  }
-  
-  .white-case {
-      background-color: white;
-  }
-  
-  .black-case {
-    background: radial-gradient(#292d38, #3c6382);
-  }
+}
+
+.black-case {
+  background: radial-gradient(#292d38, #3c6382);
+}
 
 .player1 {
-    background: green;
+  background: green;
 }
 
 .player2 {
-    background: red;
+  background: red;
 }
 
 .active {
@@ -68,3 +68,15 @@ body {
   width: 150px;
   margin: 20 20px;
 }
+
+.titlePlayer {
+  padding-left: 3em !important;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+#infoPlayer .btn {
+  margin-bottom: 1em;
+  margin-right: 1em;
+}
+

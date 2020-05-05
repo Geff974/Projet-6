@@ -63,13 +63,20 @@ class Render {
         this.map.map[x][y] = 1;
     }
 
-    placePlayer(player) {
-        const x = player.positionX;
-        const y = player.positionY;
+    placeObj(obj) {
+        const {X, Y} = obj;
 
-        const place        = document.getElementById(x + ":" + y);
-        this.map.map[x][y] = player;
-        place.classList.add('player' + player.id);
-        place.classList.add(player.weapon.name);
+        const place = document.getElementById(X + ":" + Y);
+        this.map.map[X][Y] = obj;
+        switch (obj) {
+            case player1:
+            case player2:
+                place.classList.add('player' + obj.id);
+                place.classList.add(obj.weapon.name);
+                break;
+            default :
+                place.classList.add(obj.name);
+        }
+        
     }
 }
