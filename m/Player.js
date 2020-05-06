@@ -45,4 +45,8 @@ class Player {
         }
         this.render.placeObj(this);
     }
+
+    attack (player) {
+        player.life = player.life - this.weapon.damage;
+    }
 }

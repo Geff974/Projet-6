@@ -38,11 +38,16 @@ const movePlayer = (event) => {
             }
         }
         game.turn++;
+        game.checkButton();
 
     } else {
         alert("Veuillez cliquez sur une case disponible");
     }
 
+}
+
+const attack = (Pattack, Pvictim) => {
+    Pattack.attack(Pvictim);
 }
 
 const toggleButton = (button) => {

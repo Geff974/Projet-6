@@ -22,7 +22,6 @@ class gameMap {
         this.initPlace(couteau);
         this.initPlace(pistolet);
         this.initPlace(fusilleAPompe);
-        this.placeAll();
 
         render.init();
         this.activeCase(player1);
@@ -51,14 +50,6 @@ class gameMap {
         } while (nbrGreyCase)
     }
 
-    placeAll () {
-        this.map[player1.X][player1.Y]             = player1;
-        this.map[player2.X][player2.Y]             = player2;
-        this.map[couteau.X][couteau.Y]             = couteau;
-        this.map[pistolet.X][pistolet.Y]           = pistolet;
-        this.map[fusilleAPompe.X][fusilleAPompe.Y] = fusilleAPompe;
-    }
-
     initPlace (cls) {
         let posX = null;
         let posY = null;
@@ -67,6 +58,7 @@ class gameMap {
             posY = Math.floor(Math.random() * this.map[0].length);
         } while (this.map[posX][posY] !== 1);
         cls.move(posX, posY);
+        this.map[cls.X][cls.Y] = cls;
     }
 
     desactiveCase() {
