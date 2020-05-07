@@ -42,6 +42,10 @@
         <button type="button" class="btn btn-outline-primary" id="btnGrey" onclick="controller.selectGreyCase()">Griser les cases</button>
         <button type="button" class="btn btn-outline-danger" id="btnGrey" onclick="controller.eraseMap()">EFFACER</button>
       </div>
+      <div class="row" id="lignTurnsLeft">
+        <div class="col-2 offset-4 text-right align-middle">Turns left :</div>
+        <div class="col-1" id="turnsLeft"></div>
+      </div>
       <div class="row align-items-center">
         <table class="mx-auto" id="gameMap">
         </table>
@@ -51,7 +55,7 @@
         <div class="col-6 titlePlayer">
           <h5 class="titlePlayer">Player 1</h5>
           <div class="row rowBtn">
-            <button id="attackP1" onclick="" disabled type="button" class="col-3 btn btn-outline-primary">Attack</button>
+            <button id="attackP1" onclick="attack(player1, player2)" disabled type="button" class="col-3 btn btn-outline-primary">Attack</button>
             <button id="defenseP1" onclick="toggleButton(this)" disabled type="button" class="col-3 btn btn-outline-danger">Defense</button>
           </div>
           <div class="row">
@@ -62,7 +66,7 @@
         <div class="col-6 titlePlayer">
           <h5 class="titlePlayer">Player 2</h5>
           <div class="row rowBtn">
-            <button id="attackP2" onclick="" disabled type="button" class="col-3 btn btn-outline-primary">Attack</button>
+            <button id="attackP2" onclick="attack(player2, player1)" disabled type="button" class="col-3 btn btn-outline-primary">Attack</button>
             <button id="defenseP2" onclick="toggleButton(this)" disabled type="button" class="col-3 btn btn-outline-danger">Defense</button>
           </div>
           <div class="row">

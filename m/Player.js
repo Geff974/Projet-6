@@ -13,12 +13,8 @@ class Player {
     }
 
     move(x, y) {
-        this.X = x;
-        this.Y = y;
-    }
-
-    getPosition () {
-        return this.X, this.Y;
+        this.X = parseInt(x, 10);
+        this.Y = parseInt(y, 10);
     }
 
     setWeapon (weapon) {
@@ -47,6 +43,13 @@ class Player {
     }
 
     attack (player) {
-        player.life = player.life - this.weapon.damage;
+        const defensePlayer = document.getElementById('defenseP' + player.id);
+        
+        if (defensePlayer.classList.contains('active')) {
+            player.life = player.life - this.weapon.damage / 2;
+        } else {
+            player.life = player.life - this.weapon.damage;
+        }
+        
     }
 }

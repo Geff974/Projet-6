@@ -80,3 +80,12 @@ table {
   margin-right: 1em;
 }
 
+#lignTurnsLeft {
+  margin-top : 2em;
+  margin-bottom : 2em;
+}
+
+#turnsLeft {
+  font-size: 2em;
+  font-weight: 600;
+}

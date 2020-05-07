@@ -16,29 +16,13 @@ const movePlayer = (event) => {
     const y       = eventId.substring(2, 3);
 
     if (document.getElementById(x + ":" + y).classList.contains('active')) {
-        if (game.playerActive == 1) {
+        if (game.playerActive) {
             player1.movePlayer(x, y);
-            if(game.turnsLeft>0) {
-                map.activeCase(player1);
-                game.turnsLeft--;
-            } else {
-                map.activeCase(player2);
-                game.turnsLeft    = 2;
-                game.playerActive = 0;
-            }
+            game.mouvement();
         } else {
             player2.movePlayer(x, y);
-            if(game.turnsLeft>0) {
-                map.activeCase(player2);
-                game.turnsLeft--;
-            } else {
-                map.activeCase(player1);
-                game.turnsLeft    = 2;
-                game.playerActive = 1;
-            }
+            game.mouvement();
         }
-        game.turn++;
-        game.checkButton();
 
     } else {
         alert("Veuillez cliquez sur une case disponible");
@@ -48,8 +32,13 @@ const movePlayer = (event) => {
 
 const attack = (Pattack, Pvictim) => {
     Pattack.attack(Pvictim);
+    game.actualiseLife();
+    game.checkVIctory();
+    game.mouvement();
+    document.getElementById('defenseP' + Pvictim.id).classList.remove('active');
 }
 
 const toggleButton = (button) => {
     button.classList.toggle('active');
+    game.mouvement();
 }
