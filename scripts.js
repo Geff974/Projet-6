@@ -5,18 +5,18 @@ const couteau       = new Weapon('couteau', 20);
 const pistolet      = new Weapon('pistolet', 30);
 const fusilleAPompe = new Weapon('fusilleAPompe', 50);
 
-const player1       = new Player(1, map, render);
-const player2       = new Player(2, map, render);
+const player1       = new Player(1, map, render, 3);
+const player2       = new Player(2, map, render, 3);
 
-const game          = new Game(map, player1, player2);
+const game          = new Game(map, player1, player2, player1);
 
 const movePlayer = (event) => {
-    const eventId = event.target.id;
-    const x       = eventId.substring(0, 1);
-    const y       = eventId.substring(2, 3);
+    const eventId = event.target.id.split(':');
+    const x       = eventId[0];
+    const y       = eventId[1];
 
     if (document.getElementById(x + ":" + y).classList.contains('active')) {
-        if (game.playerActive) {
+        if (game.playerActive == player1) {
             player1.movePlayer(x, y);
             game.mouvement();
         } else {
@@ -41,4 +41,10 @@ const attack = (Pattack, Pvictim) => {
 const toggleButton = (button) => {
     button.classList.toggle('active');
     game.mouvement();
+}
+
+const show = () => {
+    const infoPlayer = document.getElementById('infoPlayer');
+    infoPlayer.classList.replace('hide', 'show');
+    render.initMap();
 }

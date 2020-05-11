@@ -1,5 +1,5 @@
 body {
-  background: radial-gradient(#ff8f26, #ffdda1);
+  background: linear-gradient(135deg, #0033cc, #990099)
 }
   
 td {
@@ -8,6 +8,8 @@ td {
   height: 50px;
   width: 50px;
   background-color: white;
+  opacity: 1;
+  transition: opacity 2s;
 }
 
 .container {
@@ -16,6 +18,21 @@ td {
 
 table {
   border-collapse: collapse;
+}
+
+#playButton {
+  width: 80px;
+  height: 80px;
+}
+
+.hide {
+  opacity: 0;
+}
+
+.show {
+  opacity: 1;
+  left: 0;
+  transition: left 2s, opacity 1s;
 }
 
 .white-case {

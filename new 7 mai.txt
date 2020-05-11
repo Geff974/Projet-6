@@ -1,0 +1,9 @@
+﻿TurnLeft a mettre en caract pour le player      Fini
+distance algebrique                             Fini
+this.player1.getLife pour le checkVictory()     Fini
+Probleme dans la nomination des ID              Fini
+html data.x et data.y                           Non utilise. Split used
+
+- Lorsqu'on attaque, fini le tour
+- Bouton fini le tour
+- Afficher les 3 case disponible
