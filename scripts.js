@@ -33,18 +33,29 @@ const movePlayer = (event) => {
 const attack = (Pattack, Pvictim) => {
     Pattack.attack(Pvictim);
     game.actualiseLife();
-    game.checkVIctory();
+    if (game.checkVIctory()) {
+        render.initMap();
+    }
     game.mouvement();
     document.getElementById('defenseP' + Pvictim.id).classList.remove('active');
 }
 
-const toggleButton = (button) => {
+const toggleButton = (button, player) => {
     button.classList.toggle('active');
+    turnLeft = player.getTurnLeft();
+    turnLeft--;
+    player.setTurnLeft(-turnLeft);
     game.mouvement();
 }
 
-const show = () => {
-    const infoPlayer = document.getElementById('infoPlayer');
-    infoPlayer.classList.replace('hide', 'show');
+const Play = () => {
+    const playBtn = document.getElementById('playBtn')
+
+    const itemsHide = document.querySelectorAll('.hide');
+    for (let i=0; i<itemsHide.length; i++) {
+        itemsHide[i].classList.remove('hide');
+    }
+    playBtn.classList.add('hide');
+
     render.initMap();
 }

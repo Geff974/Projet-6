@@ -44,13 +44,21 @@ class Game {
             if (this.playerActive == this.player1) {
                 attackBtn1.removeAttribute('disabled');
                 defenseBtn1.removeAttribute('disabled');
+                attackBtn1.classList.replace('btn-outline-primary', 'btn-primary');
+                defenseBtn1.classList.replace('btn-outline-danger', 'btn-danger');
                 attackBtn2.setAttribute('disabled',  true);
                 defenseBtn2.setAttribute('disabled', true);
+                attackBtn2.classList.replace('btn-primary', 'btn-outline-primary');
+                defenseBtn2.classList.replace('btn-danger', 'btn-outline-danger');
             } else {
                 attackBtn1.setAttribute('disabled', true);
                 defenseBtn1.setAttribute('disabled', true);
+                attackBtn1.classList.replace('btn-primary', 'btn-outline-primary');
+                defenseBtn1.classList.replace('btn-danger', 'btn-outline-danger');
                 attackBtn2.removeAttribute('disabled');
                 defenseBtn2.removeAttribute('disabled');
+                attackBtn2.classList.replace('btn-outline-primary', 'btn-primary');
+                defenseBtn2.classList.replace('btn-outline-danger', 'btn-danger');
             }
         } else {
             attackBtn1.setAttribute('disabled', true);
@@ -68,5 +76,6 @@ class Game {
             alert('Player 1 WIN');
             return 1;
         }
+        return 0;
     }
 }

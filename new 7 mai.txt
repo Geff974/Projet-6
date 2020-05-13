@@ -3,7 +3,9 @@ distance algebrique                             Fini
 this.player1.getLife pour le checkVictory()     Fini
 Probleme dans la nomination des ID              Fini
 html data.x et data.y                           Non utilise. Split used
-
-- Lorsqu'on attaque, fini le tour
-- Bouton fini le tour
-- Afficher les 3 case disponible
+- Lorsqu'on attaque, finir le tour              Fini
+- Bouton fini le tour                           
+- Afficher les 3 case disponible                
+- Bouton attack defense active +visible         Fini
+- effet d'un nouveau jeu lorsque fin            
+- effet de surbrillance sur la Life             

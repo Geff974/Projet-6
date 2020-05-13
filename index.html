@@ -38,37 +38,40 @@
         </div>
       </div>
       <div>
-        <img src="img/play.png" alt="play button" id="playButton" onclick="show()">
+        <img src="img/play.png" alt="play button" id="playBtn" onclick="Play()">
       </div>
       <div class="row hide" id="lignTurnsLeft">
-        <div class="col-2 offset-4 text-right align-middle">Turns left :</div>
-        <div class="col-1" id="turnsLeft"></div>
+        <div class="col-4 offset-4 text-center">Turns left : <span id="turnsLeft"></span> </div>
       </div>
       <div class="row align-items-center">
         <table class="mx-auto" id="gameMap">
         </table>
       </div>
 
-      <div id="infoPlayer" class="row justify-content-around hide">
-        <div class="col-6 titlePlayer">
+      <div id="infoPlayer" class="row hide">
+        <div class="col-5">
           <h5 class="titlePlayer">Player 1</h5>
           <div class="row rowBtn">
-            <button id="attackP1" onclick="attack(player1, player2)" disabled type="button" class="col-3 btn btn-outline-primary">Attack</button>
-            <button id="defenseP1" onclick="toggleButton(this)" disabled type="button" class="col-3 btn btn-outline-danger">Defense</button>
+            <button id="attackP1" onclick="attack(player1, player2)" disabled type="button" class="col-3 offset-3 btn btn-outline-primary">Attack</button>
+            <button id="defenseP1" onclick="toggleButton(this, player1)" disabled type="button" class="col-3 btn btn-outline-danger">Defense</button>
           </div>
           <div class="row">
-            <div class="col-3">Life : <p id="p1life"></p></div>
+            <div class="col-6 offset-3">Life : <span id="p1life"></span></div>
           </div>
         </div>
 
-        <div class="col-6 titlePlayer">
+        <div class="col-2">
+          <button id="nextBtn" type="button" class="col-12 btn-primary">Next</button>
+        </div>
+
+        <div class="col-5">
           <h5 class="titlePlayer">Player 2</h5>
           <div class="row rowBtn">
-            <button id="attackP2" onclick="attack(player2, player1)" disabled type="button" class="col-3 btn btn-outline-primary">Attack</button>
-            <button id="defenseP2" onclick="toggleButton(this)" disabled type="button" class="col-3 btn btn-outline-danger">Defense</button>
+            <button id="attackP2" onclick="attack(player2, player1)" disabled type="button" class="col-3 offset-3 btn btn-outline-primary">Attack</button>
+            <button id="defenseP2" onclick="toggleButton(this, player2)" disabled type="button" class="col-3 btn btn-outline-danger">Defense</button>
           </div>
           <div class="row">
-            <div class="col-3">Life : <p id="p2life"></p></div>
+            <div class="col-6 offset-3">Life : <span id="p2life"></span></div>
           </div>
         </div>
 
@@ -76,7 +79,7 @@
 
 
 
-    <!-- Optional JavaScript -->
+    <!-- JavaScript -->
     <script src="v/render.js"></script>
     <script src="m/Weapon.js"></script>
     <script src="m/Player.js"></script>

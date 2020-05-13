@@ -71,6 +71,6 @@ class Player {
         } else {
             player.life = player.life - this.weapon.damage;
         }
-        
+        this.turnLeft = 1;
     }
 }
