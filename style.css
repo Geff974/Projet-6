@@ -1,6 +1,9 @@
 body {
   background: linear-gradient(135deg, #0033cc, #990099)
 }
+/* TODO effet de surbrillance lorsque la vie change */
+/* TODO Effet d'un nouveau jeu lorsqu'1 est fini */
+/* TODO Modal pour le player qui a gagné */
   
 td {
   border: solid 1px black;
@@ -64,26 +67,26 @@ table {
   box-shadow: 0px 0px 10px black;
 }
 
-.point {
-  background-image: url(img/point.png);
+.fist {
+  background-image: url(img/fist.png);
   background-size: auto 100%;
   z-index: 5;
 }
 
-.couteau {
-  background-image: url(img/couteau.png);
+.knife {
+  background-image: url(img/knife.png);
   background-size: auto 100%;
   z-index: 5;
 }
 
-.pistolet {
-  background-image: url(img/pistolet.png);
+.gun {
+  background-image: url(img/gun.png);
   background-size: auto 100%;
   z-index: 5;
 }
 
-.fusilleAPompe {
-  background-image: url(img/fusilleAPompe.png);
+.shotgun {
+  background-image: url(img/shotgun.png);
   background-size: auto 100%;
   z-index: 5;
 }

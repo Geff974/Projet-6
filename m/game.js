@@ -9,13 +9,13 @@ class Game {
     actualiseLife () {
         const lifeP1 = document.getElementById('p1life');
         const lifeP2 = document.getElementById('p2life');
-
-        lifeP1.innerHTML = this.player1.life;
-        lifeP2.innerHTML = this.player2.life;
+        
+        lifeP1.innerHTML = this.player1.getLife();
+        lifeP2.innerHTML = this.player2.getLife();
     }
 
-    mouvement () {
-        this.playerActive.setTurnLeft(-1);
+    mouvement (mvnt = 1) {
+        this.playerActive.setTurnLeft(-mvnt);
 
         if (!this.playerActive.getTurnLeft()) {
             if (this.playerActive == this.player1) {
@@ -31,16 +31,16 @@ class Game {
         document.getElementById('turnsLeft').innerHTML = this.playerActive.getTurnLeft();
     }
 
-    checkButton () {
+    checkButton () { //TODO utiliser Jquery
         const attackBtn1   = document.getElementById('attackP' + this.player1.id);
         const defenseBtn1  = document.getElementById('defenseP' + this.player1.id);
         const attackBtn2   = document.getElementById('attackP' + this.player2.id);
         const defenseBtn2  = document.getElementById('defenseP' + this.player2.id);
  
-        let distance = Math.sqrt((this.player1.getPosition('x')-this.player2.getPosition('x')) ** 2 
-                        + (this.player2.getPosition('y')-this.player1.getPosition('y')) ** 2);
+        const dist = distance(this.player1.getPosition('x'), this.player1.getPosition('y'), 
+                                  this.player2.getPosition('x'), this.player2.getPosition('y'));
         
-        if (distance === 1) {
+        if (dist === 1) { 
             if (this.playerActive == this.player1) {
                 attackBtn1.removeAttribute('disabled');
                 defenseBtn1.removeAttribute('disabled');
@@ -65,6 +65,11 @@ class Game {
             defenseBtn1.setAttribute('disabled', true);
             attackBtn2.setAttribute('disabled', true);
             defenseBtn2.setAttribute('disabled', true);
+
+            attackBtn1.classList.replace('btn-primary', 'btn-outline-primary');
+            defenseBtn1.classList.replace('btn-danger', 'btn-outline-danger');
+            attackBtn2.classList.replace('btn-primary', 'btn-outline-primary');
+            defenseBtn2.classList.replace('btn-danger', 'btn-outline-danger');
         }
     }
 

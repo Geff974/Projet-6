@@ -39,16 +39,16 @@ class Render {
                         break;
                     case player1:
                     case player2:
-                        col.classList.add('player'+this.map.map[i][j].id, 'point');
+                        col.classList.add('player'+this.map.map[i][j].id, 'fist');
                         break;
-                    case couteau:
-                        col.classList.add('couteau');
+                    case knife:
+                        col.classList.add('knife');
                         break;
-                    case pistolet:
-                        col.classList.add('pistolet');
+                    case gun:
+                        col.classList.add('gun');
                         break;
-                    case fusilleAPompe:
-                        col.classList.add('fusilleAPompe');
+                    case shotgun:
+                        col.classList.add('shotgun');
                         break;
                 }
                 col.onclick = movePlayer;
@@ -63,19 +63,19 @@ class Render {
         this.map.map[x][y] = 1;
     }
 
-    placeObj(obj) {
-        const {X, Y} = obj;
+    placePlayerOrWeapon(PlayerOrWeapon) {
+        const {X, Y} = PlayerOrWeapon;
 
         const place = document.getElementById(X + ":" + Y);
-        this.map.map[X][Y] = obj;
-        switch (obj) {
+        this.map.map[X][Y] = PlayerOrWeapon;
+        switch (PlayerOrWeapon) {
             case player1:
             case player2:
-                place.classList.add('player' + obj.id);
-                place.classList.add(obj.weapon.name);
+                place.classList.add('player' + PlayerOrWeapon.id);
+                place.classList.add(PlayerOrWeapon.weapon.name);
                 break;
             default :
-                place.classList.add(obj.name);
+                place.classList.add(PlayerOrWeapon.name);
         }
         
     }

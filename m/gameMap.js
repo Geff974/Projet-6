@@ -19,9 +19,9 @@ class gameMap {
         
         this.initPlace(player1);
         this.initPlace(player2);
-        this.initPlace(couteau);
-        this.initPlace(pistolet);
-        this.initPlace(fusilleAPompe);
+        this.initPlace(knife);
+        this.initPlace(gun);
+        this.initPlace(shotgun);
 
         render.init();
         this.activeCase(player1);
@@ -79,6 +79,7 @@ class gameMap {
 
     activeCase(player) {
         this.desactiveCase();
+        let turnLeft = player.getTurnLeft();
 
         let {X, Y} = player;
         X = parseInt(X, 10);
@@ -88,7 +89,7 @@ class gameMap {
         const nbrRow = document.getElementById('nbrRow').value;
         
         let i=Y+1;
-        let nbrCase=1;
+        let nbrCase=turnLeft;
         while (i<nbrCol && nbrCase>0) {
             if (!this.checkCaseAvailab(X, i)) break;
             document.getElementById(X + ":" + i).classList.add('active');
@@ -96,7 +97,7 @@ class gameMap {
             nbrCase--;
         }
 
-        nbrCase=1;
+        nbrCase=turnLeft;
         i=Y-1;
         while (i>=0 && nbrCase>0) {
             if (!this.checkCaseAvailab(X, i)) break;
@@ -105,7 +106,7 @@ class gameMap {
             nbrCase--;
         }
 
-        nbrCase=1;
+        nbrCase=turnLeft;
         i=X+1;
         while (i<nbrRow && nbrCase>0) {
             if (!this.checkCaseAvailab(i, Y)) break;
@@ -114,7 +115,7 @@ class gameMap {
             nbrCase--;
         }
 
-        nbrCase=1;
+        nbrCase=turnLeft;
         i=X-1;
         while (i>=0 && nbrCase>0) {
             if (!this.checkCaseAvailab(i, Y)) break;
