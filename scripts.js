@@ -26,7 +26,7 @@ const movePlayer  = (event) => {
         }
 
     } else {
-        alert("Veuillez cliquez sur une case disponible");
+        swal("Erreur !", "Veuillez cliquez sur une case disponible !", "error");
     }
 
 }
@@ -34,9 +34,8 @@ const movePlayer  = (event) => {
 const attack = (Pattack, Pvictim) => {
     Pattack.attack(Pvictim);
     game.actualiseLife();
-    if (game.checkVIctory()) {
-        document.location.reload(true);
-    }
+    pulseLife(Pvictim);
+    game.checkVIctory();
     game.mouvement();
     document.getElementById('defenseP' + Pvictim.id).classList.remove('active');
 }
@@ -58,11 +57,12 @@ const nextPlayer = () => {
 }
 
 const play = () => {
-    const playBtn = document.getElementById('playBtn')
+    const playBtn = document.getElementById('playBtn');
 
     const itemsHide = document.querySelectorAll('.hide');
     for (let i=0; i<itemsHide.length; i++) {
-        itemsHide[i].classList.remove('hide');
+        itemsHide[i].classList.replace('hide', 'show');
+        itemsHide[i].style.animationDelay = '2s';
     }
     playBtn.classList.add('hide');
 
@@ -71,4 +71,12 @@ const play = () => {
 
 const distance = (AX, AY, BX, BY) => {
     return Math.sqrt((AX-BX) ** 2 + (AY-BY) ** 2);
+}
+
+const pulseLife = (player) => {
+    const logo = document.getElementById('p' + player.getId() + 'life');
+    logo.classList.add('lifePulse');
+    setTimeout(function () {
+        logo.classList.remove('lifePulse');
+    }, 1000);
 }

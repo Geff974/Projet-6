@@ -31,56 +31,55 @@ class Game {
         document.getElementById('turnsLeft').innerHTML = this.playerActive.getTurnLeft();
     }
 
-    checkButton () { //TODO utiliser Jquery
-        const attackBtn1   = document.getElementById('attackP' + this.player1.id);
-        const defenseBtn1  = document.getElementById('defenseP' + this.player1.id);
-        const attackBtn2   = document.getElementById('attackP' + this.player2.id);
-        const defenseBtn2  = document.getElementById('defenseP' + this.player2.id);
- 
+    checkButton () {
         const dist = distance(this.player1.getPosition('x'), this.player1.getPosition('y'), 
                                   this.player2.getPosition('x'), this.player2.getPosition('y'));
         
         if (dist === 1) { 
             if (this.playerActive == this.player1) {
-                attackBtn1.removeAttribute('disabled');
-                defenseBtn1.removeAttribute('disabled');
-                attackBtn1.classList.replace('btn-outline-primary', 'btn-primary');
-                defenseBtn1.classList.replace('btn-outline-danger', 'btn-danger');
-                attackBtn2.setAttribute('disabled',  true);
-                defenseBtn2.setAttribute('disabled', true);
-                attackBtn2.classList.replace('btn-primary', 'btn-outline-primary');
-                defenseBtn2.classList.replace('btn-danger', 'btn-outline-danger');
+                // attackBtn1.removeAttribute('disabled');
+                $('#attackP1').prop('disabled', false).removeClass('btn-outline-primary').addClass('btn-primary');
+                $('#defenseP1').prop('disabled', false).removeClass('btn-outline-danger').addClass('btn-danger');
+                $('#attackP2').prop('disabled', true).removeClass('btn-primary').addClass('btn-outline-primary');
+                $('#defenseP2').prop('disabled', true).removeClass('btn-danger').addClass('btn-outline-danger');
             } else {
-                attackBtn1.setAttribute('disabled', true);
-                defenseBtn1.setAttribute('disabled', true);
-                attackBtn1.classList.replace('btn-primary', 'btn-outline-primary');
-                defenseBtn1.classList.replace('btn-danger', 'btn-outline-danger');
-                attackBtn2.removeAttribute('disabled');
-                defenseBtn2.removeAttribute('disabled');
-                attackBtn2.classList.replace('btn-outline-primary', 'btn-primary');
-                defenseBtn2.classList.replace('btn-outline-danger', 'btn-danger');
+                $('#attackP1').prop('disabled', true).removeClass('btn-primary').addClass('btn-outline-primary');
+                $('#defenseP1').prop('disabled', true).removeClass('btn-danger').addClass('btn-outline-danger');
+                $('#attackP2').prop('disabled', false).removeClass('btn-outline-primary').addClass('btn-primary');
+                $('#defenseP2').prop('disabled', false).removeClass('btn-outline-danger').addClass('btn-danger');
             }
         } else {
-            attackBtn1.setAttribute('disabled', true);
-            defenseBtn1.setAttribute('disabled', true);
-            attackBtn2.setAttribute('disabled', true);
-            defenseBtn2.setAttribute('disabled', true);
-
-            attackBtn1.classList.replace('btn-primary', 'btn-outline-primary');
-            defenseBtn1.classList.replace('btn-danger', 'btn-outline-danger');
-            attackBtn2.classList.replace('btn-primary', 'btn-outline-primary');
-            defenseBtn2.classList.replace('btn-danger', 'btn-outline-danger');
+            $('#attackP1').prop('disabled', true).addClass('btn-outline-primary').removeClass('btn-primary');
+            $('#defenseP1').prop('disabled', true).addClass('btn-outline-danger').removeClass('btn-danger');
+            $('#attackP2').prop('disabled', true).addClass('btn-outline-primary').removeClass('btn-primary');
+            $('#defenseP2').prop('disabled', true).addClass('btn-outline-danger').removeClass('btn-danger');
         }
     }
 
     checkVIctory() {
         if (this.player1.getLife() < 1) {
-            alert('Player 2 WIN');
+            this.endGame(this.player1);
             return 1;
         } else if (this.player2.getLife() < 1) {
-            alert('Player 1 WIN');
+            this.endGame(this.player2);
             return 1;
         }
         return 0;
+    }
+
+    endGame(playerWin) {
+        swal({
+            title: "Le player " + playerWin.getId() + " est le WINNER !",
+            text: "Souhaitez-vous rejouer ?",
+            icon: "warning",
+            buttons: ['Non', 'Oui']
+          })
+          .then((playAgain) => {
+            if (playAgain) {
+                document.location.reload(true);
+            } else {
+                window.close();
+            }
+          });
     }
 }

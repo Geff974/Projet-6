@@ -52,6 +52,7 @@ class Render {
                         break;
                 }
                 col.onclick = movePlayer;
+                col.style.animationDelay = ((i /2) + (j * 0.1)) + 's';
                 gameMapRow[i].appendChild(col);
             }
         }
