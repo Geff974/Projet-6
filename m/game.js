@@ -58,10 +58,10 @@ class Game {
 
     checkVIctory() {
         if (this.player1.getLife() < 1) {
-            this.endGame(this.player1);
+            this.endGame(this.player2);
             return 1;
         } else if (this.player2.getLife() < 1) {
-            this.endGame(this.player2);
+            this.endGame(this.player1);
             return 1;
         }
         return 0;
@@ -70,16 +70,13 @@ class Game {
     endGame(playerWin) {
         swal({
             title: "Le player " + playerWin.getId() + " est le WINNER !",
-            text: "Souhaitez-vous rejouer ?",
-            icon: "warning",
-            buttons: ['Non', 'Oui']
+            text: "Appuyer sur OK pour recharger le jeux.",
+            icon: "success"
           })
           .then((playAgain) => {
             if (playAgain) {
                 document.location.reload(true);
-            } else {
-                window.close();
             }
-          });
+          }); 
     }
 }

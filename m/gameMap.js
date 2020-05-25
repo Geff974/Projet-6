@@ -7,9 +7,6 @@ class gameMap {
         //Create map with white case
         for (let i=0; i<nbrRow; i++) {
             this.map[i] = [];
-        }
-        
-        for (let i=0; i<nbrRow; i++) {
             for (let j=0; j<nbrCol; j++) {
                 this.map[i][j] = 1;
             }
@@ -30,15 +27,6 @@ class gameMap {
     
     selectGreyCase () {
         let nbrGreyCase = document.getElementById('nbrGreyCase').value;
-        
-        //Clean grey case
-        for (const i in this.map) {
-            for (const j in this.map[i]) {
-                if (this.map[i].hasOwnProperty(j)) {
-                    this.map[i][j] = 1;
-                }
-            }
-        }
 
         do {
             const rand = Math.floor(Math.random() * this.map.length);

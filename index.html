@@ -18,23 +18,23 @@
 
     <div class="container">
       <div class="row align-items-center">
-        <div class="col-2 text-right hide">
+        <div class="col-2 text-right">
           <label for="nbrRow">Lignes :</label>
         </div>
         <div class="col-2">
-          <input type="number" class="form-control hide" id="nbrRow" value="10">
+          <input type="number" class="form-control" id="nbrRow" value="10">
         </div>
-        <div class="col-2 text-right hide">
+        <div class="col-2 text-right">
           <label for="nbrCol">Colonnes :</label>
         </div>
         <div class="col-2">
-          <input type="number" class="form-control hide" id="nbrCol" value="10">
+          <input type="number" class="form-control" id="nbrCol" value="10">
         </div>
-        <div class="col-2 text-right hide">
+        <div class="col-2 text-right">
           <label for="nbrRow">Cases grise :</label>
         </div>
         <div class="col-2">
-          <input type="number" class="form-control hide" id="nbrGreyCase" value="10">
+          <input type="number" class="form-control" id="nbrGreyCase" value="10">
         </div>
       </div>
       <div>
@@ -53,7 +53,7 @@
           <h5 class="titlePlayer">Player 1</h5>
           <div class="row rowBtn">
             <button id="attackP1" onclick="attack(player1, player2)" disabled type="button" class="col-3 offset-3 btn btn-outline-primary">Attack</button>
-            <button id="defenseP1" onclick="toggleButton(this, player1)" disabled type="button" class="col-3 btn btn-outline-danger">Defense</button>
+            <button id="defenseP1" onclick="defense(this, player1)" disabled type="button" class="col-3 btn btn-outline-danger">Defense</button>
           </div>
           <div class="row">
             <div class="col-6 offset-3">Life : <span id="p1life"></span></div>
@@ -68,7 +68,7 @@
           <h5 class="titlePlayer">Player 2</h5>
           <div class="row rowBtn">
             <button id="attackP2" onclick="attack(player2, player1)" disabled type="button" class="col-3 offset-3 btn btn-outline-primary">Attack</button>
-            <button id="defenseP2" onclick="toggleButton(this, player2)" disabled type="button" class="col-3 btn btn-outline-danger">Defense</button>
+            <button id="defenseP2" onclick="defense(this, player2)" disabled type="button" class="col-3 btn btn-outline-danger">Defense</button>
           </div>
           <div class="row">
             <div class="col-6 offset-3">Life : <span id="p2life"></span></div>
@@ -85,7 +85,7 @@
     <script src="m/Player.js"></script>
     <script src="m/game.js"></script>
     <script src="m/gameMap.js"></script>
-    <script src="scripts.js"></script>
+    <script src="main.js"></script>
     <script src="jquery-3.5.1.js"></script>
     <!-- Customize alert -->
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>

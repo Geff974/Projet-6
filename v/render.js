@@ -31,29 +31,29 @@ class Render {
 
         for (let i=0; i<this.map.map.length; i++) {
             for (let j=0; j<this.map.map[0].length; j++) {
-                const col = document.createElement('td');
-                col.id = i + ':' + j;
+                const cel = document.createElement('td');
+                cel.id = i + ':' + j;
                 switch (this.map.map[i][j]) {
                     case 0:
-                        col.classList.add('black-case');
+                        cel.classList.add('black-case');
                         break;
                     case player1:
                     case player2:
-                        col.classList.add('player'+this.map.map[i][j].id, 'fist');
+                        cel.classList.add('player'+this.map.map[i][j].id, 'fist');
                         break;
                     case knife:
-                        col.classList.add('knife');
+                        cel.classList.add('knife');
                         break;
                     case gun:
-                        col.classList.add('gun');
+                        cel.classList.add('gun');
                         break;
                     case shotgun:
-                        col.classList.add('shotgun');
+                        cel.classList.add('shotgun');
                         break;
                 }
-                col.onclick = movePlayer;
-                col.style.animationDelay = ((i /2) + (j * 0.1)) + 's';
-                gameMapRow[i].appendChild(col);
+                cel.onclick = movePlayer;
+                cel.style.animationDelay = ((i /2) + (j * 0.1)) + 's';
+                gameMapRow[i].appendChild(cel);
             }
         }
 

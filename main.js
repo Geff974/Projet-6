@@ -1,14 +1,14 @@
-const map           = new gameMap();
-const render        = new Render(map);
-const fist         = new Weapon('fist', 10);
-const knife         = new Weapon('knife', 20);
-const gun      = new Weapon('gun', 30);
+const map     = new gameMap();
+const render  = new Render(map);
+const fist    = new Weapon('fist', 10);
+const knife   = new Weapon('knife', 20);
+const gun     = new Weapon('gun', 30);
 const shotgun = new Weapon('shotgun', 50);
 
-const player1       = new Player(1, map, render, 3);
-const player2       = new Player(2, map, render, 3);
+const player1 = new Player(1, map, render, 3);
+const player2 = new Player(2, map, render, 3);
 
-const game          = new Game(map, player1, player2, player1);
+const game    = new Game(map, player1, player2, player1);
 
 const movePlayer  = (event) => {
     const eventId = event.target.id.split(':');
@@ -40,8 +40,8 @@ const attack = (Pattack, Pvictim) => {
     document.getElementById('defenseP' + Pvictim.id).classList.remove('active');
 }
 
-const toggleButton = (button, player) => {
-    button.classList.toggle('active');
+const defense = (button, player) => {
+    button.classList.add('active');
     let turnLeft = player.getTurnLeft();
     turnLeft--;
     player.setTurnLeft(-turnLeft);
