@@ -39,7 +39,7 @@ class Render {
                         break;
                     case player1:
                     case player2:
-                        cel.classList.add('player'+this.map.map[i][j].id, 'fist');
+                        cel.classList.add('player'+this.map.map[i][j].getId(), 'fist');
                         break;
                     case knife:
                         cel.classList.add('knife');
